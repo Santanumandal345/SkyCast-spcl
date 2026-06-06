@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>SkyCast | My Location + Favorites + Search</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="header">
+            <div class="title"><i class="fas fa-cloud-sun"></i>
+                <h1>SkyCast</h1>
+            </div>
+            <button id="darkModeToggle" class="dark-toggle"><i class="fas fa-moon"></i> <span>Dark Mode</span></button>
+        </div>
+
+        <!-- Search with suggestions + My Location -->
+        <div class="search-section">
+            <div class="search-panel">
+                <div class="search-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="cityInput" placeholder="Search city..." autocomplete="off">
+                    <button id="searchBtn"><i class="fas fa-location-dot"></i> Search</button>
+                </div>
+                <button id="locationBtn" class="location-btn"><i class="fas fa-map-marker-alt"></i> My Location</button>
+                <button id="refreshBtn" class="refresh-btn"><i class="fas fa-arrows-rotate"></i> Refresh</button>
+            </div>
+            <div id="suggestionsBox" class="suggestions-dropdown"></div>
+        </div>
+
+        <!-- Favorites Panel -->
+        <div class="favorites-panel">
+            <span class="fav-label"><i class="fas fa-heart" style="color: #ff6b6b;"></i> Favorites</span>
+            <div class="fav-buttons" id="favoritesContainer"></div>
+            <button id="addFavoriteBtn" class="add-fav-btn"><i class="fas fa-plus-circle"></i> Add Current</button>
+        </div>
+
+        <!-- Current Weather -->
+        <div class="weather-card" id="weatherCard">
+            <div class="animated-weather-icon" id="animatedIcon">
+                <div class="sun-animation"></div>
+            </div>
+            <div class="city-temp">
+                <h2 id="cityName">Kolkata</h2>
+                <div class="temp-value" id="temperature">32°C</div>
+                <div class="condition-text" id="conditionText">Sunny</div>
+            </div>
+            <div class="weather-stats">
+                <div class="stat-card"><i class="fas fa-tint"></i>
+                    <div>
+                        <h4>Humidity</h4>
+                        <p id="humidityVal">65%</p>
+                    </div>
+                </div>
+                <div class="stat-card"><i class="fas fa-wind"></i>
+                    <div>
+                        <h4>Wind Speed</h4>
+                        <p id="windVal">12 km/h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forecast & Graph -->
+        <div class="forecast-section">
+            <h2 style="color:white; margin-bottom:1rem;"><i class="fas fa-calendar-week"></i> 5-Day Forecast</h2>
+            <div class="forecast-grid" id="forecastGrid">
+                <div class="forecast-card">Loading forecast...</div>
+            </div>
+            <div class="graph-container">
+                <div class="graph-title" style="color:white; margin-bottom:12px;"><i class="fas fa-chart-line"></i>
+                    Temperature Trend (°C)</div>
+                <canvas id="tempChart"></canvas>
+            </div>
+        </div>
+
+        <div id="weatherModal" class="modal">
+            <div class="modal-content"><span class="close-modal">&times;</span>
+                <h3>Weather Details</h3>
+                <p id="modalDetails"></p>
+            </div>
+        </div>
+        <footer style="text-align:center; margin-top:2rem; color:rgba(255,255,255,0.7); font-size:0.8rem;">📍 My
+            Location | ⭐ Favorites | 🔍 Search suggestions | 📊 Temperature Graph</footer>
+    </div>
+
+<script src="script.js"></script>
+    
+</body>
+
+
+</html>
